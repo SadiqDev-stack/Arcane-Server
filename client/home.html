@@ -227,7 +227,7 @@
     // Load reports from API
     const loadReports = async () => {
       try {
-        const res = await fetch("/reports");
+        const res = await fetch("/api/reports");
         const data = await res.json();
         renderReports(data.reports || []);
       } catch (err) {
@@ -254,7 +254,7 @@
         body: document.getElementById("body").value
       };
       try {
-        const res = await fetch("/security/check", {
+        const res = await fetch("/api/security/check", {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(payload)

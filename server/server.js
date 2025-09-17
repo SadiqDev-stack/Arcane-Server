@@ -13,7 +13,7 @@ app.use(express.static("./client"))
 app.use(cors())
 
 
-app.post("/security/check", async (req, res) => {
+app.post("/api/security/check", async (req, res) => {
   const stringPayload = JSON.stringify(req.body);
   const {email, body} = req.body;
 
@@ -54,7 +54,7 @@ app.post("/security/check", async (req, res) => {
 })
 
 
-app.get("/reports", async (req, res) => {
+app.get("/api/reports", async (req, res) => {
    try{
     const reports = await Report.find({});
     res.json({
