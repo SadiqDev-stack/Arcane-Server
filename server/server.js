@@ -93,3 +93,4 @@ mongoose.connect(DB_URI)
   log('error connecting database ' + er, "bad")
 })
 
+export default app
