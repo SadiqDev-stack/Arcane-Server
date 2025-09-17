@@ -4,14 +4,14 @@ import {getResponse} from "./helper.js"
 import Report from "./models/report.js";
 import mongoose from "mongoose"
 import {log, logger} from "./middlewares/logger.js"
+import cors from "cors"
 
 const app = express();
 app.use(express.json())
 app.use(logger)
 app.use(express.static("./client"))
-app.get("/", (req, res) => {
-  res.redirect("/home.html")
-})
+app.use(cors())
+
 
 app.post("/security/check", async (req, res) => {
   const stringPayload = JSON.stringify(req.body);
@@ -71,6 +71,12 @@ app.get("/reports", async (req, res) => {
      })
    }
 })
+
+
+app.get("/", (req, res) => {
+  res.redirect("/home.html")
+})
+
 
 const start = () => {
 app.listen(SERVER_PORT, () => {
