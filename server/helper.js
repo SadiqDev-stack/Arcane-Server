@@ -1,4 +1,4 @@
-const {AI_API_KEY, AI_MODEL} = process.env;
+const {AI_API_KEY, AI_MODEL, AI_ENDPOINT} = process.env;
 
 const aiRole = () => {
   return `
