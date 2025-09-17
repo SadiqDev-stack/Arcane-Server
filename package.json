@@ -1,0 +1,13 @@
+{
+  "name": "arcane_server",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=./server/.env --watch ./server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
