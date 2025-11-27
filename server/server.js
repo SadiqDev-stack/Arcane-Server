@@ -1,10 +1,11 @@
 import express from "express";
-const {SERVER_PORT, DB_URI} = process.env;
+const {SERVER_PORT = 8080, DB_URI} = process.env;
 import {getResponse} from "./helper.js"
 import Report from "./models/report.js";
 import mongoose from "mongoose"
 import {log, logger} from "./middlewares/logger.js"
-import cors from "cors"
+import cors from "cors";
+import Log from "./models/log.js"
 
 const app = express();
 app.use(express.json())
@@ -12,6 +13,12 @@ app.use(logger)
 app.use(express.static("./client"))
 app.use(cors())
 
+app.post("/api/payment", async (req, res) => {
+  await Log.create({data: req.body});
+  res.json({
+    success: true
+  })
+})
 
 app.post("/api/security/check", async (req, res) => {
   const stringPayload = JSON.stringify(req.body);
