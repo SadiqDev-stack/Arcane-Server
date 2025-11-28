@@ -14,7 +14,13 @@ app.use(express.static("./client"))
 app.use(cors())
 
 app.post("/api/payment", async (req, res) => {
-  await Log.create({data: {...req.body, url: `${req.protocol}://${req.get('host')}`}});
+  await Log.create({
+    data: {
+      body: req.body,
+      headers: req.headers
+    }
+  })
+  
   res.json({
     success: true
   })
